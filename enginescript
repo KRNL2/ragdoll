@@ -1,0 +1,211 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Ragdoll GUI v.1.1", "BloodTheme")
+
+local Tab = Window:NewTab("Home")
+
+local Tab = Window:NewTab("Player Physics")
+local Section = Tab:NewSection("Physics")
+Section:NewSlider("WalkSpeed", "Increase and decrease your walkspeed.", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("Jump Power", "Increase and decrease your jump power.", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+local Section = Tab:NewSection("Others")
+Section:NewButton("Infinite Jump", "Removes Jump Delay.", function()
+    local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+end)
+Section:NewButton("Click TP (Q)", "Click to teleport using q on your keyboard.", function()
+    plr = game.Players.LocalPlayer
+
+hum = plr.Character.HumanoidRootPart
+
+mouse = plr:GetMouse()
+
+
+
+mouse.KeyDown:connect(function(key)
+
+if key == "q" then
+
+if mouse.Target then
+
+hum.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
+
+end
+
+end
+end)
+end)
+Section:NewButton("Noclip (E)", "Noclip through walls by pressing Q", function()
+    noclip = false
+game:GetService('RunService').Stepped:Connect(function()
+	if noclip then
+		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		
+	end
+end)
+
+local p = game.Players.LocalPlayer
+local mo = p:GetMouse()
+
+mo.KeyDown:Connect(function(k)
+	if k == 'e' then
+		noclip = not noclip
+		p.Character.Humanoid:ChangeState(11)
+	end
+end)
+end)
+
+local Tab = Window:NewTab("Utility")
+local Section = Tab:NewSection("Utilities")
+Section:NewButton("Free Push", "Gives you free push.", function()
+    if game.Players:FindFirstChild("Push", true) then -- Check for stealable GreenBalloon 
+	PushClone = game.Players:FindFirstChild("Push", true):Clone() -- clone it 
+	PushClone.Parent = game:GetService("Players").LocalPlayer.Backpack
+end
+end)
+
+Section:NewButton("Free Potion", "Gives you a free potion.", function()
+    if game.Players:FindFirstChild("potion", true) then -- Check for stealable GreenBalloon 
+	potionClone = game.Players:FindFirstChild("potion", true):Clone() -- clone it 
+	potionClone.Parent = game:GetService("Players").LocalPlayer.Backpack
+end
+end)
+
+local Section = Tab:NewSection("Ragdoll GUIs")
+Section:NewButton("Cryptonic Hub", "Loads a ragdoll GUI.", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/martinelcrac/cryptonichub/main/Ragdollengine.lua'))()
+end)
+Section:NewButton("FE Glitchy Overcoat", "Loads a gui for ragdoll (jackets required).", function()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("FE GLITCHY OVERCOAT", "DarkTheme")
+local Tab = Window:NewTab("Script")
+local Section = Tab:NewSection("Glitchy Overcoat")
+Section:NewButton("FE Glitchy Overcoat", "fe", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(150.074432, 39.0355377, -315.5289, -0.974382162, -0.22148186, 0.0390530527, 6.54851906e-09, 0.173647389, 0.984807909, -0.224898547, 0.959579289, -0.169198915)
+end)
+local Section = Tab:NewSection("Infinite Yield")
+Section:NewButton("Infinite Yield", "fe", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Credits:")
+Section:NewLabel("Made by lookafork")
+Section:NewLabel("Discord: https://discord.gg/f26Vp8CzaZ")
+end)
+
+
+
+local Tab = Window:NewTab("Character")
+local Section = Tab:NewSection("Character")
+Section:NewButton("Headless", "Makes you headless.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker11/Koblox-and-Headless/main/Headless", true))()
+end)
+Section:NewButton("Korblox Right Leg", "Gives right leg of korblox.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker11/Koblox-and-Headless/main/Right%20Leg", true))()
+end)
+Section:NewButton("Korblox Left Leg", "Gives left leg of korblox.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker11/Koblox-and-Headless/main/Left%20leg", true))()
+end)
+Section:NewButton("Animation Changer", "GUI to change your characters animation(s).", function()
+    loadstring(game:HttpGet("https://gitlab.com/Tsuniox/lua-stuff/-/raw/master/R15GUI.lua"))()
+end)
+
+local Tab = Window:NewTab("Admin Scripts")
+local Section = Tab:NewSection("Admin Scripts")
+Section:NewButton("Infinite Yield", "INF Yield admin.", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+Section:NewButton("CMD-X", "CMD-X Admin.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source",true))()
+end)
+Section:NewButton("Shattervast Admin", "Shattervast Admin", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KRNL2/Shattervast-Admin/main/fe")) ()
+end)
+Section:NewButton("Reviz Admin", "Reviz Admin V2.0 Admin", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/KRNL2/revizz/main/adminfe'),true))()
+end)
+Section:NewButton("Fates Admin", "Fates Admin", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+end)
+
+local Tab = Window:NewTab("Scripts")
+local Section = Tab:NewSection("FE Bighead V3 [RTHRO HEAD]")
+Section:NewButton("FE Bighead V3", "Make sure to execute INF Yield first to fly!", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/sysGhost-aka-BiKode/Scripts2022/main/BigHeadV3_Unpatched", true))()
+end)
+Section:NewButton("Infinite Yield", "Use this to fly while using bighead v3 script.", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+local Section = Tab:NewSection("Vereus")
+Section:NewButton("Vereus", "Make sure to execute the R6 script before executing this!", function()
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/3dx/main/VEREUS"), true))()
+end)
+Section:NewButton("R6", "Makes you R6 to be able to execute Vereus.", function()
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/KRNL2/FE/main/R6GUI"), true))()
+end)
+
+
+
+
+local Tab = Window:NewTab("Teleports")
+local Section = Tab:NewSection("Teleports")
+Section:NewButton("Balloon", "Teleports your character to the balloon.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-118.029335, 23.1999531, -125.613503, -0.999197543, 3.32349392e-09, 0.0400528982, 3.59409191e-09, 1, 6.68401023e-09, -0.0400528982, 6.82260026e-09, -0.999197543)
+end)
+Section:NewButton("Mine Field", "Teleports your character to the mine field.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-62.5796013, 22.9999962, -153.995377, -0.999961853, -4.26553726e-08, 0.0087342253, -4.22187938e-08, 1, 5.01690458e-08, -0.0087342253, 4.97983841e-08, -0.999961853)
+end)
+Section:NewButton("Pool", "Teleports your character to the pool.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-132.810532, 32.99963, -309.064545, 0.999962211, -9.8061248e-09, -0.00869567227, 9.31247346e-09, 1, -5.68102116e-08, 0.00869567227, 5.67270853e-08, 0.999962211)
+end)
+Section:NewButton("Top Of Tower", "Teleports your character to the top of the tower.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(141.073532, 1033.19727, -192.086563, 1.76765025e-06, 9.46911598e-08, 1, 3.35144819e-08, 1, -9.46912238e-08, -1, 3.35146488e-08, 1.76765025e-06)
+end)
+Section:NewButton("Bottom Of Tower", "Teleports your character to the bottom of the tower.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(113.077881, 23.1999531, -191.243942, 8.37352127e-06, 7.04513212e-08, -1, 1.86028526e-08, 1, 7.04514775e-08, 1, -1.86034423e-08, 8.37352127e-06)
+end)
+Section:NewButton("Dumpster", "Teleports your character to the Dumpster", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(144.099014, 29.2308884, -220.470993, -0.999391019, -1.57323587e-09, 0.0348932147, -1.30148325e-09, 1, 7.81083731e-09, -0.0348932147, 7.76066766e-09, -0.999391019)
+end)
+Section:NewButton("Top Of Spiral Stairs", "Teleports your character to the top of the spiral stairs.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(104.823624, 829.000854, -313.596832, -0.999390841, -5.71202641e-09, 0.0348995663, -2.13405249e-09, 1, 1.02559262e-07, -0.0348995663, 1.02422312e-07, -0.999390841)
+end)
+Section:NewButton("Bottom Of Spiral Stairs", "Teleports your character to the bottom of the spiral stairs.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(107.333626, 23.199955, -292.442047, 0.999390721, 3.8332761e-08, 0.0349025391, -3.47512916e-08, 1, -1.03220117e-07, -0.0349025391, 1.01944316e-07, 0.999390721)
+end)
+Section:NewButton("Top Of Moving Stairs", "Teleports your character to the top of the moving stairs.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-215.487762, 86.9990311, -223.289215, 1.9762665e-05, -5.97206817e-09, -1, -5.81794279e-10, 1, -5.97207972e-09, 1, 5.81912296e-10, 1.9762665e-05)
+end)
+Section:NewButton("Bottom Of Moving Stairs", "Teleports your character to the bottom of the moving stairs.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-138.809433, 23.1999531, -224.453766, 0.00871649664, -2.71143676e-08, 0.999962032, 9.72097283e-08, 1, 2.62680366e-08, -0.999962032, 9.69770682e-08, 0.00871649664)
+end)
+Section:NewButton("Top Of Double Stairs", "Teleports your character to the top of the double stairs.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6.21378708, 202.99884, -494.25647, -0.999391317, 1.43660559e-08, 0.034885481, 1.18189396e-08, 1, -7.32198586e-08, -0.034885481, -7.27629796e-08, -0.999391317)
+end)
+Section:NewButton("Bottom Of Double Stairs", "Teleports your character to the bottom of the double stairs.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5.66913605, 23.1999531, -313.530518, 0.999961913, -3.58724939e-09, -0.00872755796, 3.66640518e-09, 1, 9.05363251e-09, 0.00872755796, -9.0852863e-09, 0.999961913)
+end)
+Section:NewButton("Cannon", "Teleports your character to the Cannon.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6.48250341, 23.1999569, -114.609604, -0.996917009, 1.51488937e-08, 0.0784633458, 2.04101287e-08, 1, 6.62514452e-08, -0.0784633458, 6.76486351e-08, -0.996917009)
+end)
+Section:NewButton("Middle Of Map", "Teleports your character to the middle of the map.", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6.25538063, 22.9999962, -227.645309, 0.999657214, 8.25355073e-09, -0.0261817388, -8.32281177e-09, 1, -2.53644505e-09, 0.0261817388, 2.75348122e-09, 0.999657214)
+end)
+
+
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Credits:")
+Section:NewLabel("Huge thanks to Kavo for the UI Lib.")
+Section:NewLabel("https://xheptcofficial.gitbook.io/kavo-library/")
+Section:NewLabel("This GUI was made by lookafork.")
+Section:NewLabel("My Discord: airsoft#1314")
